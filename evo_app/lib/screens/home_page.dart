@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../widget/highlight_card.dart';
 
 class home_page extends StatefulWidget {
@@ -17,77 +17,88 @@ class _home_pageState extends State<home_page> {
     'https://assets.devfolio.co/hackathons/d2e152245d8146898efc542304ef6653/assets/cover/694.png',
     'https://assets.devfolio.co/hackathons/d2e152245d8146898efc542304ef6653/assets/cover/694.png'
   ];
+  final RequestData = FirebaseFirestore.instance
+      .collection('Sessions')
+      // .where("senderEmail", isEqualTo: _user.email)
+      // .where("status", isNotEqualTo: "Approved")
+      .snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
         child: Container(
           child: Column(
             children: [
-
               //main container (full orange)
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xffF47C7C),
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(40)
-                  ),
+                  borderRadius:
+                      BorderRadius.only(bottomRight: Radius.circular(40)),
                 ),
-
                 child: Column(
                   children: [
-
                     //yellow container
                     Container(
                       decoration: BoxDecoration(
                         color: Color(0xffEF9F9F),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40)
-                        ),
+                        borderRadius:
+                            BorderRadius.only(bottomLeft: Radius.circular(40)),
                       ),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 8,right: 12,top: 8,bottom: 8),
+                            padding: const EdgeInsets.only(
+                                left: 8, right: 12, top: 8, bottom: 8),
                             child: Row(
-                             children: [
-                               Text("We do the work.\nYou have the fun.",
-                               style:TextStyle(
-                                 fontWeight: FontWeight.bold,
-                                 fontSize: 20,
-                               )
-                               ),
-                               Expanded(child: Container(),),
-                               Icon(Icons.calendar_today)
-                             ],
+                              children: [
+                                Text("We do the work.\nYou have the fun.",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    )),
+                                Expanded(
+                                  child: Container(),
+                                ),
+                                Icon(Icons.calendar_today)
+                              ],
                             ),
                           ),
 
                           //corousel slider
                           Padding(
-                            padding: const EdgeInsets.only(left: 8,right: 8,top: 8,bottom: 30),
+                            padding: const EdgeInsets.only(
+                                left: 8, right: 8, top: 8, bottom: 30),
                             child: Container(
-                              child: CarouselSlider(
-                                items: imgList
-                                    .map((item) => Container(
-                                    child:
-                                    GestureDetector(
-                                        child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(20.0),
-                                            child: Image.network(item, fit: BoxFit.cover,)),
-                                        onTap: () {
-                                          Navigator.pushNamed(context, '/details_page');
-                                        })
-                                ),
-                                )
-                                    .toList(),
-                                options: CarouselOptions(
-                                    autoPlay: true,
-                                    aspectRatio: 2.0,
-                                    enlargeCenterPage: true,
-                                    viewportFraction: 0.8
-                                ),
+                              child: StreamBuilder(
+                                // stream: ,
+                                builder: (context, snapshot) {
+                                  return CarouselSlider(
+                                    items: imgList
+                                        .map(
+                                          (item) => Container(
+                                              child: GestureDetector(
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Image.network(
+                                                        item,
+                                                        fit: BoxFit.cover,
+                                                      )),
+                                                  onTap: () {
+                                                    Navigator.pushNamed(context,
+                                                        '/details_page');
+                                                  })),
+                                        )
+                                        .toList(),
+                                    options: CarouselOptions(
+                                        autoPlay: true,
+                                        aspectRatio: 2.0,
+                                        enlargeCenterPage: true,
+                                        viewportFraction: 0.8),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -95,15 +106,16 @@ class _home_pageState extends State<home_page> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8,bottom: 30,top: 8),
+                      padding:
+                          const EdgeInsets.only(left: 8, bottom: 30, top: 8),
                       child: Row(
                         children: [
-                          Text("To get an event up here\n you can visit: ",
+                          Text(
+                            "To get an event up here\n you can visit: ",
                             style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold
-                            ),
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           )
                         ],
                       ),
@@ -112,24 +124,26 @@ class _home_pageState extends State<home_page> {
                 ),
               ),
 
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
 
-              Text("Highlights",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
-                ),
+              Text(
+                "Highlights",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
 
               Expanded(
-                child: ListView.builder(scrollDirection: Axis.vertical,shrinkWrap: true,itemCount: 5, itemBuilder: ((context, index) {
-                  return highlight_card();
-                })),
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: ((context, index) {
+                      return highlight_card();
+                    })),
               ),
             ],
           ),
-
-
         ),
       ),
     );
