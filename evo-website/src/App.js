@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-	Create,
 	Dashboard,
 	Landing,
 	Login,
 	Register,
-	Status,
-	Exam
+	Calendar,
+	Editor
 } from './containers';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './containers/calendar/calendar.css';
 
 const App = () => {
 	return (
@@ -18,6 +18,12 @@ const App = () => {
 				<Routes>
 					<Route exact path="/" element={<Landing />} />
 					<Route path="/register" element={<Register />} />
+					<Route path="/dashboard" element={<Dashboard />} />
+					<Route path="/login" element={<Login />} />
+					{/* dashboard  */}
+                {/* pages  */}
+                <Route path="/editor" element={<Editor />} />
+                <Route path="/calendar" element={<Calendar />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
