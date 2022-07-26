@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,12 @@ class highlight_card extends StatelessWidget {
                   GestureDetector(
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.0),
-                          child: Image.network(item, fit: BoxFit.cover,)),
+                        child:CachedNetworkImage(
+                          imageUrl: item,
+                          placeholder: (context, url) => CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          fit: BoxFit.cover,
+                        ),),
                       onTap: () {
                         //Navigator.pushNamed(context, '/details_page');
                       })
@@ -43,7 +49,7 @@ class highlight_card extends StatelessWidget {
                 .toList(),
             options: CarouselOptions(
                 autoPlay: false,
-                aspectRatio: 2.0,
+                aspectRatio: 2.5,
                 enlargeCenterPage: false,
                 viewportFraction: 0.6
             ),

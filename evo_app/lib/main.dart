@@ -1,5 +1,7 @@
+import 'package:evo_app/screens/add_event.dart';
 import 'package:evo_app/screens/details_page.dart';
 import 'package:evo_app/screens/home_page.dart';
+import 'package:evo_app/screens/permission.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,10 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         backgroundColor: Colors.pink[200],
       ),
-      initialRoute : "/home_page",
+      initialRoute : "/main_screen",
       routes: {
-        "/home_page" :(context) => home_page(),
+        "/main_screen" :(context) => main_screen(),
         "/details_page" : (context)=> details_page(),
+        "/add_event" : (context)=> add_event(),
+        "/permission" : (context)=> permission(),
       },
     );
   }
