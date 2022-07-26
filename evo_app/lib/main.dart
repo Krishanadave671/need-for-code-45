@@ -1,3 +1,5 @@
+import 'package:evo_app/screens/details_page.dart';
+import 'package:evo_app/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,9 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        backgroundColor: Colors.pink[200],
       ),
-      home: const Text("Hello world "),
+      initialRoute : "/home_page",
+      routes: {
+        "/home_page" :(context) => home_page(),
+        "/details_page" : (context)=> details_page(),
+      },
     );
   }
 }
