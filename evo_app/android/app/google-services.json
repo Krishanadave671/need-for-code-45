@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "398992243428",
+    "project_id": "dementia-67c29",
+    "storage_bucket": "dementia-67c29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398992243428:android:9a1bbbd6560e3d57990af1",
+        "android_client_info": {
+          "package_name": "com.example.evo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398992243428-16m7d7l5q4d6cdrk74vb9nmc2sfj9g8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMqy374za7CxgbrHc9hGY-j-rdKWibSZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398992243428-16m7d7l5q4d6cdrk74vb9nmc2sfj9g8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398992243428:android:b89ad917eb778e23990af1",
+        "android_client_info": {
+          "package_name": "com.example.tsechacksapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398992243428-16m7d7l5q4d6cdrk74vb9nmc2sfj9g8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMqy374za7CxgbrHc9hGY-j-rdKWibSZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398992243428-16m7d7l5q4d6cdrk74vb9nmc2sfj9g8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
